@@ -5,7 +5,7 @@ pipeline {
         stage('Compile Stage') {
             steps {
                 withMaven(maven: 'maven_3_5_0') {
-                    bat 'mvn clean compile'
+                    bat 'mvn clean package'
                 }
             }
         }
@@ -14,6 +14,15 @@ pipeline {
             steps {
                 withMaven(maven: 'maven_3_5_0') {
                     bat 'mvn test'
+                }
+            }
+            
+            post {
+                // If Maven was able to run the tests, even if some of the test
+                // failed, record the test results and archive the jar file.
+                success {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'target/*.jar'
                 }
             }
         }
