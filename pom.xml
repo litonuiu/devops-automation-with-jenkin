@@ -11,6 +11,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>spring-boot-redis-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>spring-boot-redis-demo</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -68,6 +69,7 @@
 				</configuration>
 			</plugin>-->
 		</plugins>
+		<finalName>spring-boot-redis</finalName>
 	</build>
 
 </project>
